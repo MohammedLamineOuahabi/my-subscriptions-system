@@ -7,8 +7,8 @@ const connectDB = async () => {
   const DB = process.env.DB_STR.replace('<username>', process.env.DB_USER)
     .replace('<dbname>', process.env.DB_NAME)
     .replace('<password>', process.env.DB_PASSWORD);
-  console.log(DB);
 
+  console.log(DB);
   //connect to db
   try {
     const conn = await mongoose.connect(DB, {
