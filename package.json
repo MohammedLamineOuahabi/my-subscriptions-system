@@ -1,5 +1,5 @@
 {
-  "name": "My MailChimp",
+  "name": "my-mail-chimp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
