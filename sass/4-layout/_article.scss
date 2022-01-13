@@ -1,0 +1,49 @@
+//  Article Image
+
+//  Article content
+.content {
+  color: $color-gray-4;
+  & h2 {
+    margin: 2.5rem auto;
+  }
+  & h3 {
+    margin: 2rem auto;
+  }
+  & p {
+    text-align: justify;
+    margin: auto;
+  }
+
+  & .resources {
+    margin: 3rem auto;
+    text-align: center;
+
+    & a,
+    & a:visited {
+      font-size: 3rem;
+      color: $color-primary;
+    }
+    & a:hover {
+      color: darken($color-primary, 10%);
+    }
+  }
+}
+
+@include respond(phone) {
+  & .title {
+    text-align: center;
+    margin: 1rem auto;
+  }
+  //  Article Image
+  & .header-image {
+    margin: 1rem auto;
+  }
+  //content
+  & .content {
+    padding: 2rem 2rem;
+  }
+  //header-image
+  & .header-image {
+    padding: 2rem 2rem;
+  }
+}

@@ -1,0 +1,68 @@
+/*         ******* Mixins & Page Width ********         */
+
+$smartphone-width: 500px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+/*         ******* grid vars ********         */
+
+$nav-height: 10rem;
+$hero-height: 30rem;
+$search-height: 35rem;
+$header-height: 5rem;
+$footer-height: 6rem;
+
+/*         ******* website  colors vars ********         */
+
+$color-primary: #6c6d70;
+$color-secondary: #c7b198;
+$color-tertiary: #f0ece3;
+$color-success: #2bff00;
+$color-danger: #f60000;
+$color-warning: #fff177;
+$color-info: #77f;
+$color-light: #f2f2f2;
+$color-dark: #575555;
+$color-white: #fff;
+
+$logo-color: $color-primary;
+
+/******** GRID *********/
+
+$direction: left;
+$direction-inverse: right;
+$grid-width: 114rem;
+$gutter-vertical: 6rem;
+$gutter-vertical-small: 3rem;
+$gutter-small: 3rem;
+$gutter-big: 6rem;
+$gutter-horizontal: 2rem;
+
+$header-height: 20rem;
+$nav-height: 8rem;
+$footer-height: 8rem;
+
+/******** COLORS *********/
+
+//$color-primary: #61dafb;
+$color-primary: #00bcd4;
+$color-secondary: #006d7c;
+$color-tertiary: #363a45;
+
+$color-gray-0: #f7f7f7;
+$color-gray-1: #eee;
+$color-gray-2: #999;
+$color-gray-3: #555;
+$color-gray-4: #222;
+
+$color-white: #fff;
+$color-black: #000;
+$color-white-alpha: #fffffff7;
+
+/******** FONT  *********/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Roboto:wght@100;300;400;700;900&display=swap');
+
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Open Sans', sans-serif;
+$root-font-size: 62.5%;

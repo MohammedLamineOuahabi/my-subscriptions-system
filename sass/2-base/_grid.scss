@@ -1,0 +1,29 @@
+.row {
+  @include clearfix;
+
+  [class^='col-'] {
+    float: $direction;
+
+    &:not(:first-child) {
+      margin-#{$direction}: $gutter-horizontal;
+
+      @include respond(phone) {
+        margin-#{$direction}: 0;
+        margin: auto;
+      }
+      @include respond(tab-port) {
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    @include respond(phone) {
+      width: 100% !important;
+    }
+  }
+}
+
+.wrap {
+  max-width: $grid-width;
+  margin: 0 auto;
+  overflow: hidden;
+}

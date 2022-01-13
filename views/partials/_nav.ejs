@@ -1,0 +1,25 @@
+<!-- navigation -->
+<nav class="nav">
+
+  <div class="logo">
+    <a href="/">Coding<span class="c-secondary">BOOKS</span></a>
+  </div>
+
+
+  <div class="desktop-menu hide-on-phone" id="desktop-menu">
+    <ul>
+      <li><a href="/" <% if (page_name==='home' ) { %>class="active" <% } %>>Home</a></li>
+      <li><a href="/blog" <% if (page_name==='blog' ) { %>class="active" <% } %>>Blog</a></li>
+      <li><a href="/about-us" <% if (page_name==='about' ) { %>class="active" <% } %>>About us</a></li>
+      <li><a href="/contact-us" <% if (page_name==='contact' ) { %>class="active" <% } %>>Contact us</a></li>
+    </ul>
+  </div>
+
+
+  <!-- Hamburger menu -->
+  <a href="#" class="mobile-menu" id="mobile-menu">
+    <span></span>
+  </a>
+
+
+</nav>

@@ -2,7 +2,7 @@ const express = require('express');
 var cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
-const connectDB = require('./config/db.js');
+const connectDB = require('./utils/db.js');
 
 const { notFound, errorHandler } = require('./middleware/errorMiddleware.js');
 const userRoutes = require('./routes/userRoutes.js');
@@ -49,9 +49,20 @@ app.use('/api/v1/users', userRoutes);
 });*/
 
 if (process.env.NODE_ENV === 'production') {
+  /*
+
+  using regular expressions to detect non api requests
+  /     / : using regular expression
+  ^       : begin ogf line
+  \/      : / character
+  ()      : capture group of tokens
+  (?!X)   : negative lookahead not equal X
+  *.      : matches any character (except for line terminators)  
+
+  */
   app.use(/^\/(?!api).*/, (req, res) => {
-    res.send('Api is running ...');
-    //.sendFile(path.join(__dirname, 'index.html'));
+    //res.send('Api is running ...');
+    sendFile(path.join(__dirname, 'index.html'));
   });
 }
 // *******  Error Middleware *************

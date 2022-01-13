@@ -1,0 +1,110 @@
+footer {
+  @include wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $color-gray-4;
+  padding: 0 2rem;
+  .footer-social,
+  .footer-copy-write,
+  .footer-links {
+    flex: 1;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    & * {
+      font-size: 1.8rem;
+    }
+  }
+}
+.footer-copy-write {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  & a {
+    color: $color-primary;
+    font-size: 3rem;
+    font-weight: bold;
+    & span {
+      color: $color-gray-1;
+      font-size: 2rem;
+    }
+  }
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-transform: uppercase;
+
+  & ul {
+    & li {
+      float: right;
+      & a {
+        color: $color-white;
+        font-size: 1.8rem;
+      }
+      & a:hover {
+        color: $color-secondary;
+      }
+      &:not(:last-child) {
+        padding-left: 2rem;
+      }
+    }
+  }
+}
+.footer-social {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  & a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: $color-gray-4;
+    color: $color-gray-1;
+    border-radius: 10%;
+    border: 1px solid #fff;
+    text-align: center;
+    transition: 0.8s;
+    &:first-child {
+      margin-right: 1.2rem;
+    }
+
+    & i {
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+      width: 1.8rem;
+    }
+  }
+  & a:hover {
+    background-color: $color-black;
+    color: $color-gray-0;
+  }
+}
+
+@include respond(tab-port) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .footer-social {
+      padding-top: 5rem;
+      justify-content: center;
+    }
+
+    .footer-links {
+      justify-content: center;
+      padding-bottom: 5rem;
+    }
+  }
+}
