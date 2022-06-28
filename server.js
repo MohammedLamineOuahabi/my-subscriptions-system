@@ -38,7 +38,11 @@ if (process.env.NODE_ENV === 'development') {
     res.send('Api is running ...');
   });
 }
-
+app.all('/*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
+});
 // *******   ROUTES   ************************
 app.use('/api/v1/subscribes', subscribeRoutes);
 app.use('/api/v1/messages', messageRoutes);
