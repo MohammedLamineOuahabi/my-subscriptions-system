@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === 'production') {
   */
   app.use(/^\/(?!api).*/, (req, res) => {
     //res.send('Api is running ...');
-    sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
   });
 }
 // *******  Error Middleware *************
