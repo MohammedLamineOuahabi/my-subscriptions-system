@@ -25,13 +25,9 @@ const addSubscribe = asyncHandler(async (req, res) => {
     email,
     list
   });
-  try {
-    await subscribe.save();
-    res.status(201).json({ success: true });
-  } catch (error) {
-    //throw new Error(error);
-    res.status(500).json({ success: false, message: error.message });
-  }
+
+  await subscribe.save();
+  res.status(201).json({ success: true });
 });
 
 // @desc   get all Subscribe
