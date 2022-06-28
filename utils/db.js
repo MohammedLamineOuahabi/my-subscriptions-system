@@ -13,8 +13,7 @@ const connectDB = async () => {
   try {
     const conn = await mongoose.connect(DB, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true
+      useUnifiedTopology: true
     });
 
     console.log(`MongoDB connected : ${conn.connection.host}`.blue); //.blue colors package

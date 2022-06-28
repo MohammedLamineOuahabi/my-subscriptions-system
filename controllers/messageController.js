@@ -7,23 +7,21 @@ const Message = require('../models/messageModel');
 const addMessage = asyncHandler(async (req, res) => {
   const { username, email, message, list } = req.body;
   //check values
-  console.log(req.body);
   if (!username || !email || !message || !list) {
     res.status(400);
     throw new Error('No infos');
-  } else {
-    const msg = new Message({
-      username,
-      email,
-      message,
-      list
-    });
-    try {
-      await msg.save();
-      res.status(201).json(msg);
-    } catch (error) {
-      throw new Error(error);
-    }
+  }
+  const msg = new Message({
+    username,
+    email,
+    message,
+    list
+  });
+  try {
+    await msg.save();
+    res.status(201).json(msg);
+  } catch (error) {
+    throw new Error(error);
   }
 });
 // @desc   get Message by id
