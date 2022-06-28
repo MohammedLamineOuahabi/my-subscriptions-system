@@ -1,5 +1,5 @@
-const asyncHandler = require('express-async-handler');
-const Subscribe = require('../models/subscribeModel');
+import asyncHandler from 'express-async-handler';
+import Subscribe from '../models/subscribeModel.js';
 
 // @desc   add new Subscribe
 // @route  POST /api/v1/Subscribe
@@ -11,27 +11,49 @@ const addSubscribe = asyncHandler(async (req, res) => {
   if (!email || !list) {
     res.status(400);
     throw new Error('No infos');
-  } else {
-    //check if email exist
+  }
+  //check if email exist
 
-    const s = await Subscribe.find({ email });
-    if (s.length > 0) {
-      res.status(403);
-      throw new Error('Email Already Exists!');
-    }
+  const s = await Subscribe.find({ email });
+  if (s.length > 0) {
+    //res.status(403);
+    //throw new Error('Email Already Exists!');
+    return res.status(201).json({ success: true });
+  }
 
-    const subscribe = new Subscribe({
-      email,
-      list
-    });
-    try {
-      await subscribe.save();
-      res.status(201).json(subscribe);
-    } catch (error) {
-      throw new Error(error);
-    }
+  const subscribe = new Subscribe({
+    email,
+    list
+  });
+  try {
+    await subscribe.save();
+    res.status(201).json({ success: true });
+  } catch (error) {
+    //throw new Error(error);
+    res.status(500).json({ success: false });
   }
 });
+
+// @desc   get all Subscribe
+// @route  GET /api/v1/Subscribe/myContacts
+// @access private/admin
+const getSubscribes = asyncHandler(async (req, res) => {
+  //get Contact using id
+  const Subscribe = await Subscribe.find({}).populate('user', 'id name');
+  res.json(Subscribe);
+});
+
+export default {
+  addSubscribe,
+  getSubscribes
+  /*,
+  getContactById,
+  setContactIsPaid,
+  getMySubscribe,
+  setContactIsDelivered*/
+};
+
+/*
 // @desc   get Subscribe by id
 // @route  GET /api/v1/Subscribes/:id
 // @access private
@@ -103,22 +125,4 @@ const getMySubscribes = asyncHandler(async (req, res) => {
   const Subscribes = await Subscribe.find({ user: req.user._id });
   res.json(Subscribes);
 });
-
-// @desc   get all Subscribe
-// @route  GET /api/v1/Subscribe/myContacts
-// @access private/admin
-const getSubscribes = asyncHandler(async (req, res) => {
-  //get Contact using id
-  const Subscribe = await Subscribe.find({}).populate('user', 'id name');
-  res.json(Subscribe);
-});
-
-module.exports = {
-  addSubscribe,
-  getSubscribes
-  /*,
-  getContactById,
-  setContactIsPaid,
-  getMySubscribe,
-  setContactIsDelivered*/
-};
+ */

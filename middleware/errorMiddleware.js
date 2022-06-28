@@ -16,8 +16,8 @@ const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode).json({
     message: err.message,
-    stack: process.NODE_ENV === "production" ? null : err.stack
+    stack: process.NODE_ENV === 'production' ? null : err.stack
   });
 };
 
-module.exports = { notFound, errorHandler };
+export { notFound, errorHandler };

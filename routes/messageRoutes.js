@@ -1,14 +1,8 @@
-const express = require('express');
-const messageController = require('../controllers/messageController');
-const { protect, admin } = require('../middleware/authMiddleware');
+import express from 'express';
+import messageController from '../controllers/messageController.js';
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.route('/').post(messageController.addMessage);
-// .get(protect, admin, messageController.getMessages);
-///router.route('/myorders').get(protect, messageController.getMyOrders);
-///router.route('/:id').get(protect, messageController.getOrderById);
-///router.route('/:id/pay').put(protect, messageController.setOrderIsPaid);
-///router.route('/:id/delivered').put(protect, messageController.setOrderIsDelivered);
-
-module.exports = router;
+export default router;

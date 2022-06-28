@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const subscribeSchema = mongoose.Schema(
   {
@@ -9,4 +9,4 @@ const subscribeSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Subscribe', subscribeSchema);
+export default mongoose.model('Subscribe', subscribeSchema);

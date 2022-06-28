@@ -1,6 +1,6 @@
-const asyncHandler = require("express-async-handler");
-const User = require("../models/userModel");
-const generateToken = require("../utils/generateToken");
+import asyncHandler from 'express-async-handler';
+import User from '../models/userModel.js';
+import generateToken from '../utils/generateToken.js';
 
 // @desc Auth user & get token
 // @route POST /api/v1/login
@@ -18,7 +18,7 @@ const authUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw new Error("incorrect email or password ");
+    throw new Error('incorrect email or password ');
   }
 });
 
@@ -32,7 +32,7 @@ const addUser = asyncHandler(async (req, res) => {
   const userExist = await User.findOne({ email });
   if (userExist) {
     res.status(400);
-    throw new Error("Sorry,user already exists. ");
+    throw new Error('Sorry,user already exists. ');
   }
 
   const user = await User.create({ username, email, password });
@@ -47,7 +47,7 @@ const addUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("invalid user data. ");
+    throw new Error('invalid user data. ');
   }
 });
 
@@ -67,7 +67,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw Error("user not found");
+    throw Error('user not found');
   }
 });
 // @desc update user
@@ -94,7 +94,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw Error("user not found");
+    throw Error('user not found');
   }
 });
 // @desc Auth user & get token
@@ -116,10 +116,10 @@ const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   if (user) {
     await user.remove();
-    res.json({ message: "user deleted" });
+    res.json({ message: 'user deleted' });
   } else {
     res.status(404);
-    throw new Error("User not found.");
+    throw new Error('User not found.');
   }
 });
 
@@ -128,12 +128,12 @@ const deleteUser = asyncHandler(async (req, res) => {
 // @access private
 const getUser = asyncHandler(async (req, res) => {
   //find the user
-  const user = await User.findById(req.params.id).select("-password"); ///
+  const user = await User.findById(req.params.id).select('-password'); ///
   if (user) {
     res.json(user);
   } else {
     res.status(404);
-    throw new Error("User not found.");
+    throw new Error('User not found.');
   }
 });
 
@@ -157,10 +157,11 @@ const updateUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw Error("user not found");
+    throw Error('user not found');
   }
 });
-module.exports = {
+
+export default {
   authUser,
   getUserProfile,
   updateUserProfile,

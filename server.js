@@ -1,13 +1,13 @@
-const express = require('express');
-var cors = require('cors');
-const morgan = require('morgan');
-const path = require('path');
-const connectDB = require('./utils/db.js');
-
-const { notFound, errorHandler } = require('./middleware/errorMiddleware.js');
-const userRoutes = require('./routes/userRoutes.js');
-const subscribeRoutes = require('./routes/subscribeRoutes.js');
-const messageRoutes = require('./routes/messageRoutes.js');
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import path from 'path';
+import connectDB from './utils/db.js';
+import 'dotenv/config';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import userRoutes from './routes/userRoutes.js';
+import subscribeRoutes from './routes/subscribeRoutes.js';
+import messageRoutes from './routes/messageRoutes.js';
 //const orderRoutes = require("./routes/orderRoutes.js");
 //const uploadRoutes = require("./routes/uploadRoutes.js");
 
@@ -16,8 +16,6 @@ const messageRoutes = require('./routes/messageRoutes.js');
 const app = express();
 
 // ******* load env vars for dev env  *******
-
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 // ******* Connect to db  *******************
 
@@ -38,11 +36,7 @@ if (process.env.NODE_ENV === 'development') {
     res.send('Api is running ...');
   });
 }
-app.all('/*', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-  next();
-});
+
 // *******   ROUTES   ************************
 app.use('/api/v1/subscribes', subscribeRoutes);
 app.use('/api/v1/messages', messageRoutes);

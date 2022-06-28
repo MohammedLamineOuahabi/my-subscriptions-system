@@ -1,5 +1,5 @@
-const asyncHandler = require('express-async-handler');
-const Message = require('../models/messageModel');
+import asyncHandler from 'express-async-handler';
+import Message from '../models/messageModel.js';
 
 // @desc   add new Message
 // @route  POST /api/v1/Message
@@ -105,7 +105,7 @@ const getMessages = asyncHandler(async (req, res) => {
   res.json(Message);
 });
 
-module.exports = {
+export default {
   addMessage
   //getMessages
   /*,
